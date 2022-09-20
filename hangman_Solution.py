@@ -43,12 +43,12 @@ class Hangman:
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
         self.word = random.choice(word_list)
-        word_guessed = ['_'] * len(self.word) #has to be only ones not guessed
-        self.num_letters = len(set(self.word)) #has to be ones not guessed yet
+        self.word_guessed = ['_'] * len(self.word) 
+        self.num_letters = len(set(self.word))
         self.num_lives = num_lives
-        self.list_letters = list() #list of already tried letters ###
+        self.list_letters = set()
         print(f"The mystery word has {len(self.word)} characters")
-        print(f"{word_guessed}")
+        print(f"{self.word_guessed}")
         # TODO 2: Initialize the attributes as indicated in the docstring
         # TODO 2: Print two messages upon initialization:
         # 1. "The mystery word has {len(self.word)} characters" (The number of letters is NOT the UNIQUE number of letters)
@@ -57,13 +57,16 @@ class Hangman:
 
     def check_letter(self, letter) -> None:
         if letter in self.word:
-            self.num_letters -= 1 #need to replace '_' with letter
-            print("right letter")
+            self.num_letters -= 1
+            print(f"Nice, {letter} is in the word.")
             x = self.word.index(letter)
-            print(x)
+            self.word_guessed[x] = letter
+            print(self.word_guessed) #need to make sure all spaces are filled   
         else:
             self.num_lives -=1
-            print("wrong letter")
+            print(f"Sorry, {letter} is not in the word.")
+            print(f"You have {self.num_lives} lives left.")
+        self.list_letters.add(f"{letter}")
 
         '''
         Checks if the letter is in the word.
@@ -98,7 +101,6 @@ class Hangman:
                 print(f"{letter} has already been tried")
             else:
                 self.check_letter(letter)
-                break
 
         # TODO 1: Ask the user for a letter iteratively until the user enters a valid letter
         # TODO 1: Assign the letter to a variable called `letter`
