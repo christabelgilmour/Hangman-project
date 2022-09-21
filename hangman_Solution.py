@@ -5,6 +5,49 @@ or you will get 0 for this assignment.
 '''
 import random
 
+stages = ['''
+______
+|     |
+|     O
+|    /|\\
+|    / \\
+|_______ ''', '''
+______
+|     |
+|     O
+|    /|\\
+|    /
+|_______ ''', '''
+
+______
+|     |
+|     O
+|    /|\\
+|
+|_______ ''', '''
+
+______
+|     |
+|     O
+|    /|
+|
+|_______ ''', '''
+
+______
+|     |
+|     O
+|     |
+|
+|_______ ''', '''
+
+______
+|     |
+|
+|
+|
+|_______ ''']
+
+
 class Hangman:
     '''
     A Hangman Game that asks the user for a letter and checks if it is in the word.
@@ -67,8 +110,8 @@ class Hangman:
             self.num_lives -=1
             print(f"Sorry, {letter} is not in the word.")
             print(f"You have {self.num_lives} lives left.")
+        print(stages[self.num_lives])
         self.list_letters.add(f"{letter}")
-
 
         '''
         Checks if the letter is in the word.
