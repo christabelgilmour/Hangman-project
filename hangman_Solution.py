@@ -59,14 +59,16 @@ class Hangman:
         if letter in self.word:
             self.num_letters -= 1
             print(f"Nice, {letter} is in the word.")
-            x = self.word.index(letter)
-            self.word_guessed[x] = letter
-            print(self.word_guessed) #need to make sure all spaces are filled   
+            for i in range(len(self.word)):
+                if self.word[i] == letter:
+                    self.word_guessed[i] = f"{letter}"
+            print(self.word_guessed)   
         else:
             self.num_lives -=1
             print(f"Sorry, {letter} is not in the word.")
             print(f"You have {self.num_lives} lives left.")
         self.list_letters.add(f"{letter}")
+
 
         '''
         Checks if the letter is in the word.
@@ -101,6 +103,7 @@ class Hangman:
                 print(f"{letter} has already been tried")
             else:
                 self.check_letter(letter)
+            break
 
         # TODO 1: Ask the user for a letter iteratively until the user enters a valid letter
         # TODO 1: Assign the letter to a variable called `letter`
@@ -112,7 +115,17 @@ class Hangman:
 def play_game(word_list):
     # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
-    game.ask_letter()
+    
+    while True:
+        if '_' not in game.word_guessed:
+            print("Congratulations, you won!")
+            break
+        elif game.num_lives == 0:
+            print(f"You ran out of lives. The word was {game.word}")
+            break
+        game.ask_letter()
+
+
     # TODO 1: To test this task, you can call the ask_letter method
     # TODO 2: To test this task, upon initialization, two messages should be printed 
     # TODO 3: To test this task, you call the ask_letter method and check if the letter is in the word
