@@ -89,7 +89,7 @@ class Hangman:
         self.word_guessed = ['_'] * len(self.word) 
         self.num_letters = len(set(self.word))
         self.num_lives = num_lives
-        self.list_letters = set()
+        self.list_letters = []
         print(f"The mystery word has {len(self.word)} characters")
         print(f"{self.word_guessed}")
         # TODO 2: Initialize the attributes as indicated in the docstring
@@ -104,14 +104,14 @@ class Hangman:
             print(f"Nice, {letter} is in the word.")
             for i in range(len(self.word)):
                 if self.word[i] == letter:
-                    self.word_guessed[i] = f"{letter}"
+                    self.word_guessed[i] = letter
             print(self.word_guessed)   
         else:
             self.num_lives -=1
             print(f"Sorry, {letter} is not in the word.")
             print(f"You have {self.num_lives} lives left.")
         print(stages[self.num_lives])
-        self.list_letters.add(f"{letter}")
+        self.list_letters.append(f"{letter}")
 
         '''
         Checks if the letter is in the word.
