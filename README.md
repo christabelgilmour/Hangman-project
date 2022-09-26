@@ -4,7 +4,7 @@
 
 This repository uses Python3 to create a game of hangman. The random library is imported to generate a list of words, which the program randomly chooses from each time the game is run. The program then asks the user to enter characters and determines whether they are contained in the unknown word. This process is repeated until the user guesses the full word, or when the user runs out of lives. 
 
-To run this project you can clone the Github repository and use the command ```git pull https://github.com/christabelgilmour/Hangman-project.git``` in your terminal or clone the file in an application such as VS Code.
+To run this project you can clone the Github repository and use the command ```git clone https://github.com/christabelgilmour/Hangman-project.git``` in your terminal or clone the file in an application such as VS Code.
 
 <img width="614" alt="image" src="https://user-images.githubusercontent.com/113252944/191964157-518f6bc4-41c6-496e-b781-079430239d0f.png">
 
